@@ -17,13 +17,11 @@ public class Triangle extends Graphics {
 	
 	@Override
 	public void deplacer(Point p) {
-        Point tmp = new Point(s1.p1.getX(),s1.p1.getY());
-        s1.deplacer(p);
-        s2 = new Segment(tmp,s2.p2);
-        s2.deplacer(p);
-        s3 = new Segment(s1.p2,s2.p2);
-
-
+                Point tmp = new Point(s1.p1.getX(),s1.p1.getY());
+                s1.deplacer(p);
+                s2 = new Segment(tmp,s2.p2);
+                s2.deplacer(p);
+                s3 = new Segment(s1.p2,s2.p2);
         }
 
         public void type(){
@@ -72,24 +70,18 @@ public class Triangle extends Graphics {
                 }else if(distc1 + distc2 == distc3 || distc1 + distc3 == distc2 || distc3 + distc2 == distc1){
                         System.out.println("triangle rectangle");
                         if(distc1 + distc2 == distc3){
-                                Point need = s3.middle();
-                                Segment need2 = new Segment(need,s1.p1);
-                                return (dist3 * need2.taille()) / 2; 
+                                return (s1.taille() * s2.taille()) / 2;
                         }else if(distc3 + distc2 == distc1){
-                                Point need = s1.middle();
-                                Segment need2 = new Segment(need,s2.p2);
-                                return (dist1 * need2.taille()) / 2; 
+                                return (s2.taille() * s3.taille()) / 2; 
                         }else if(distc1 + distc3 == distc2){
-                                Point need = s2.middle();
-                                Segment need2 = new Segment(need,s3.p1);
-                                return (dist2 * need2.taille()) / 2; 
+                                return (s3.taille() * s1.taille()) / 2;
                         }       
                 }else{
                         System.out.println("triangle quelconque");
-                        float semiperimeter = (dist1 + dist2 + dist3)/2;
+                        double semiperimeter = (dist1 + dist2 + dist3)/2;
                         return Math.sqrt(semiperimeter * (semiperimeter - dist1) * (semiperimeter - dist2) * (semiperimeter - dist3));
                 }
-
+                return 0;
         }
 	
     private Segment s1;
