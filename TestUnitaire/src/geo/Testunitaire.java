@@ -1,13 +1,20 @@
 package geo;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
+
+import geo.Point;
+import geo.Rectangle;
+import geo.Triangle;
+import geo.Segment;
+
 
 import org.junit.jupiter.api.Test;
 
 class Testunitaire {
 
 	@Test
-	void test() {
+	void testPoint() {
 		Point p = new Point( 5 , 5);
 		 System.out.println(p);
 		
@@ -22,4 +29,49 @@ class Testunitaire {
 		 System.out.println(s1);
 	}
 
+	@Test
+	void testPoint2() {
+		Point a = new Point(2,2);
+		//Point b = new Point(4,4);
+		Point d = new Point(1,1);
+		
+		if(a.getX()==2 || a.getY()==2) {
+			assertTrue(true);
+		}
+		a.deplacer(d);
+			if(!(a.getX()==1) && !(a.getY()==1)) {
+				fail("Point a correctement deplace.");
+			}
+	}
+	
+
+		@Test
+		void testSegment() {
+			Point a = new Point(2,2);
+			Point b = new Point(4,4);
+			Point d = new Point(1,1);
+			
+			Segment ab = new Segment(a,b);
+			if(!(a.getX()==2) && !(a.getY()==2) && !(b.getX()==4) && !(b.getY()==4)) {
+				fail("Segment ab correctement placer");
+			}
+			
+			ab.deplacer(d);
+			if(!(a.getX()==1)&& !(a.getY()==1)) {
+				fail("Segment ab correctement deplacer");
+			}
+		}
+
+		@Test
+		void testTriangle() {
+			
+		}
+		
+		@Test
+		void testRectangle() {
+			
+		}
+	
+
+	
 }
